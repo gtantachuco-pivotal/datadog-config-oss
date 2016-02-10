@@ -102,31 +102,31 @@ prod:
 - query: "(sum:datadog.nozzle.rep.CapacityRemainingMemory{deployment:diego_deployment} ) / 0.000001024"
   palette: white_on_green
   value: 22
-- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})
+- query: per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:deployment})
   palette: red_on_white
   value: 7
-- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})
+- query: per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:deployment})
   palette: yellow_on_white
   value: 10
-- query: per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})
+- query: per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:deployment})
   palette: green_on_white
   value: 10
-- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})
+- query: per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:deployment})
   palette: red_on_white
   value: 1
-- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})
+- query: per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:deployment})
   palette: yellow_on_white
   value: 2.5
-- query: per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})
+- query: per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:deployment})
   palette: green_on_white
   value: 2.5
-- query: per_second(sum:datadog.nozzle.gorouter.total_requests{*})
+- query: per_second(sum:datadog.nozzle.router__0.total_requests{*})
   palette: red_on_white
   value: 80
-- query: per_second(sum:datadog.nozzle.gorouter.total_requests{*})
+- query: per_second(sum:datadog.nozzle.router__0.total_requests{*})
   palette: yellow_on_white
   value: 100
-- query: per_second(sum:datadog.nozzle.gorouter.total_requests{*})
+- query: per_second(sum:datadog.nozzle.router__0.total_requests{*})
   palette: green_on_white
   value: 100
 - query: avg:cloudops_tools.app_instance_monitor.router.dial.errors{domain:domain_url}

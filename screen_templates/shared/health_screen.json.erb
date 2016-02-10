@@ -37,10 +37,10 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.rejected_requests{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.router__0.rejected_requests{deployment:<%= deployment %>})"
           },
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.router__0.bad_gateways{deployment:<%= deployment %>})"
           }
         ],
         "events": [
@@ -68,7 +68,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{deployment:<%= deployment %>})"
+            "q": "per_second(sum:datadog.nozzle.router__0.total_requests{deployment:<%= deployment %>})"
           }
         ],
         "events": [
@@ -96,7 +96,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} by {job,index}",
+            "q": "sum:datadog.nozzle.router__0.total_routes{deployment:<%= deployment %>} by {job,index}",
             "stacked": false
           }
         ],
@@ -267,7 +267,7 @@
       "calc_func": "raw",
       "x": 198,
       "y": 4,
-      "query": "avg:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>}",
+      "query": "avg:datadog.nozzle.router__0.total_routes{deployment:<%= deployment %>}",
       "text_size": "auto",
       "height": 7,
       "type": "query_value",

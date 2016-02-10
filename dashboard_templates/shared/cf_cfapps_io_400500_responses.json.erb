@@ -5,7 +5,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.4xx{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.router__0.responses.4xx{deployment:<%= deployment %>})"
           }
         ],
         "events": [<%= default_events_json %>]
@@ -17,7 +17,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.responses.5xx{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.router__0.responses.5xx{deployment:<%= deployment %>})"
           }
         ],
         "events": [<%= default_events_json %>]

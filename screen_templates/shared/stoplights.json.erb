@@ -1700,7 +1700,7 @@
     {
       "metric": "",
       "text_align": "left",
-      "query": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= deployment %>})",
+      "query": "per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:<%= deployment %>})",
       "text_size": "auto",
       "title_size": 20,
       "title": true,
@@ -1726,7 +1726,7 @@
           "palette": "red_on_white",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})', 'red_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:deployment})', 'red_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -1734,7 +1734,7 @@
           "palette": "yellow_on_white",
           "comparator": "<=",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})', 'yellow_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:deployment})', 'yellow_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -1742,7 +1742,7 @@
           "palette": "green_on_white",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:deployment})', 'green_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:deployment})', 'green_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -1756,7 +1756,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.requests.CloudController{deployment:<%= deployment %>})",
+            "q": "per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:<%= deployment %>})",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -1795,7 +1795,7 @@
     {
       "metric": "",
       "text_align": "left",
-      "query": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= deployment %>})",
+      "query": "per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:<%= deployment %>})",
       "text_size": "auto",
       "title_size": 20,
       "title": true,
@@ -1821,7 +1821,7 @@
           "palette": "red_on_white",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})', 'red_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:deployment})', 'red_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -1829,7 +1829,7 @@
           "palette": "yellow_on_white",
           "comparator": "<=",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})', 'yellow_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:deployment})', 'yellow_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -1837,7 +1837,7 @@
           "palette": "green_on_white",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:deployment})', 'green_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:deployment})', 'green_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -1851,7 +1851,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.requests.uaa{deployment:<%= deployment %>})",
+            "q": "per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:<%= deployment %>})",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -1890,7 +1890,7 @@
     {
       "metric": "",
       "text_align": "left",
-      "query": "per_second(sum:datadog.nozzle.gorouter.total_requests{*})",
+      "query": "per_second(sum:datadog.nozzle.router__0.total_requests{*})",
       "text_size": "auto",
       "title_size": 20,
       "title": true,
@@ -1916,7 +1916,7 @@
           "palette": "red_on_white",
           "comparator": "<",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.total_requests{*})', 'red_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.total_requests{*})', 'red_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -1924,7 +1924,7 @@
           "palette": "yellow_on_white",
           "comparator": "<=",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.total_requests{*})', 'yellow_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.total_requests{*})', 'yellow_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         },
@@ -1932,7 +1932,7 @@
           "palette": "green_on_white",
           "comparator": ">",
           "invert": false,
-          "value": <%= threshold_value('per_second(sum:datadog.nozzle.gorouter.total_requests{*})', 'green_on_white') %>,
+          "value": <%= threshold_value('per_second(sum:datadog.nozzle.router__0.total_requests{*})', 'green_on_white') %>,
           "custom_bg_color": null,
           "custom_fg_color": null
         }
@@ -1946,7 +1946,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.gorouter.total_requests{*})",
+            "q": "per_second(sum:datadog.nozzle.router__0.total_requests{*})",
             "aggregator": "avg",
             "conditional_formats": [
               {
@@ -2043,7 +2043,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "sum:datadog.nozzle.gorouter.total_routes{deployment:<%= deployment %>} by {job,index}",
+            "q": "sum:datadog.nozzle.router__0.total_routes{deployment:<%= deployment %>} by {job,index}",
             "type": "area",
             "stacked": false
           }
@@ -2072,7 +2072,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.gorouter.bad_gateways{deployment:<%= deployment %>})"
+            "q": "per_second(avg:datadog.nozzle.router__0.bad_gateways{deployment:<%= deployment %>})"
           }
         ],
         "events": [

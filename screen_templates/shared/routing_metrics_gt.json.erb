@@ -1,5 +1,5 @@
 {
-  "board_title": "<%= environment %> Routing Metrics",
+  "board_title": "GT's <%= environment %> Routing Metrics",
   "board_bgtype": "board_graph",
   "created": "2016-01-08T01:40:12.535608+00:00",
   "original_title": "<%= environment %> Routing Metrics",
@@ -55,11 +55,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:app_benchmarking.rest_of_time{deployment:<%= deployment %>} by {status}, avg:app_benchmarking.time_in_gorouter{deployment:<%= deployment %>} by {status}, avg:app_benchmarking.time_in_app{deployment:<%= deployment %>} by {status}",
+            "q": "avg:app_benchmarking.rest_of_time{deployment:<%= diego_deployment %>} by {status}, avg:app_benchmarking.time_in_gorouter{deployment:<%= diego_deployment %>} by {status}, avg:app_benchmarking.time_in_app{deployment:<%= diego_deployment %>} by {status}",
             "type": "bars"
           },
           {
-            "q": "ewma_20(avg:app_benchmarking.total_roundtrip{deployment:<%= deployment %>} by {status})",
+            "q": "ewma_20(avg:app_benchmarking.total_roundtrip{deployment:<%= diego_deployment %>} by {status})",
             "style": {
               "palette": "warm"
             },
@@ -99,7 +99,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_subscriptions{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_subscriptions{deployment:<%= diego_deployment %>} by {ip}",
             "type": "area"
           }
         ],
@@ -127,7 +127,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_routes{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_routes{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -155,7 +155,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_tcp_subscriptions{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_tcp_subscriptions{deployment:<%= diego_deployment %>} by {ip}",
             "type": "area"
           }
         ],
@@ -183,7 +183,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_tcp_routes{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_tcp_routes{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -381,7 +381,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.total_requests{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.router__0.total_requests{deployment:<%= diego_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -409,7 +409,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.routed_app_requests{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.router__0.routed_app_requests{deployment:<%= diego_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -437,7 +437,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.responses{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.router__0.responses{deployment:<%= diego_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -465,7 +465,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.ms_since_last_registry_update{deployment:<%= deployment %>} by {ip} / 1000",
+            "q": "avg:datadog.nozzle.router__0.ms_since_last_registry_update{deployment:<%= diego_deployment %>} by {ip} / 1000",
             "type": "line"
           }
         ],
@@ -493,7 +493,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.latency{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.latency{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -521,7 +521,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.router__0.bad_gateways{deployment:<%= deployment %>})",
+            "q": "per_second(sum:datadog.nozzle.router__0.bad_gateways{deployment:<%= diego_deployment %>})",
             "style": {
               "palette": "orange"
             },
@@ -552,7 +552,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.responses.2xx{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.router__0.responses.2xx{deployment:<%= diego_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -580,7 +580,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.responses.4xx{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.router__0.responses.4xx{deployment:<%= diego_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -608,7 +608,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.responses.5xx{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.router__0.responses.5xx{deployment:<%= diego_deployment %>} by {ip})",
             "type": "area"
           }
         ],
@@ -636,7 +636,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(sum:datadog.nozzle.router__0.rejected_requests{deployment:<%= deployment %>})",
+            "q": "per_second(sum:datadog.nozzle.router__0.rejected_requests{deployment:<%= diego_deployment %>})",
             "style": {
               "palette": "orange"
             },
@@ -667,11 +667,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.numGoRoutines{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.numGoRoutines{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.numGoRoutines{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.numGoRoutines{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -711,7 +711,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.memoryStats.numBytesAllocatedHeap{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.memoryStats.numBytesAllocatedHeap{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -751,11 +751,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.memoryStats.numBytesAllocatedStack{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.memoryStats.numBytesAllocatedStack{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocatedStack{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocatedStack{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -795,11 +795,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.memoryStats.numBytesAllocated{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.memoryStats.numBytesAllocated{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocated{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.numBytesAllocated{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -839,11 +839,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.memoryStats.numMallocs{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.router__0.memoryStats.numMallocs{deployment:<%= diego_deployment %>} by {ip})",
             "type": "line"
           },
           {
-            "q": "per_second(avg:datadog.nozzle.routing_api.memoryStats.numMallocs{deployment:<%= deployment %>} by {ip})",
+            "q": "per_second(avg:datadog.nozzle.routing_api.memoryStats.numMallocs{deployment:<%= diego_deployment %>} by {ip})",
             "type": "line"
           },
           {
@@ -883,11 +883,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.memoryStats.lastGCPauseTimeNS{deployment:<%= deployment %>} by {ip} / 1000000",
+            "q": "avg:datadog.nozzle.router__0.memoryStats.lastGCPauseTimeNS{deployment:<%= diego_deployment %>} by {ip} / 1000000",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.memoryStats.lastGCPauseTimeNS{deployment:<%= deployment %>} by {ip} / 1000000",
+            "q": "avg:datadog.nozzle.routing_api.memoryStats.lastGCPauseTimeNS{deployment:<%= diego_deployment %>} by {ip} / 1000000",
             "type": "line"
           },
           {
@@ -927,11 +927,11 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.numCPUS{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.numCPUS{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
-            "q": "avg:datadog.nozzle.routing_api.numCPUS{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.numCPUS{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           },
           {
@@ -1001,19 +1001,19 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:router_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:router_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:router_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:router_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:api_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:api_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:api_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:api_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
@@ -1081,19 +1081,19 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:router_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:api_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:api_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.user{job:api_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:api_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
@@ -1161,19 +1161,19 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:router_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:router_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:router_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:router_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:api_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:api_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:api_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:api_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
@@ -1241,19 +1241,19 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:router_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:api_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:api_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.mem.percent{job:api_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:api_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
@@ -1321,19 +1321,19 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:router_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:router_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:router_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:router_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:api_z1,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:api_z1,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
-            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:api_z2,deployment:<%= deployment %>}",
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:api_z2,deployment:<%= diego_deployment %>}",
             "type": "line"
           },
           {
@@ -1401,7 +1401,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.total_requests{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.total_requests{deployment:<%= diego_deployment %>} by {ip}",
             "type": "line"
           }
         ],
@@ -1429,7 +1429,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.total_token_errors{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.total_token_errors{deployment:<%= diego_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1460,7 +1460,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.routing_api.key_refresh_events{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.routing_api.key_refresh_events{deployment:<%= diego_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1491,7 +1491,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.token_fetch_errors{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.token_fetch_errors{deployment:<%= diego_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
@@ -1522,7 +1522,7 @@
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.subscribe_events_errors{deployment:<%= deployment %>} by {ip}",
+            "q": "avg:datadog.nozzle.router__0.subscribe_events_errors{deployment:<%= diego_deployment %>} by {ip}",
             "conditional_formats": [
 
             ],
