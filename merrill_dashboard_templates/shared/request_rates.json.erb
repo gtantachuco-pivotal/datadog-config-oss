@@ -1,0 +1,69 @@
+{
+  "graphs": [
+
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:aws.elb.request_count{deployment:<%= deployment %>} by {availability-zone}"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "ELB req/sec"
+    },
+
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(sum:datadog.nozzle.router__0.requests.CloudController{deployment:<%= deployment %>})"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "Cloud Controller req/sec"
+    },
+
+
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(sum:datadog.nozzle.router__0.requests.uaa{deployment:<%= deployment %>})"
+          }
+        ],
+        "events": [
+          <%= default_events_json %>
+        ]
+      },
+      "title": "UAA req/sec"
+    },
+
+
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "sum:datadog.nozzle.router__0.total_routes{deployment:<%= deployment %>} by {job,index}",
+            "stacked": false
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "Total Routes by Router"
+    }
+
+  ],
+
+  "title": "<%= environment %> Request Rates",
+  "description": "The request rates and routes of various components in the system."
+}

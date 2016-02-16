@@ -1,7 +1,3 @@
-<%
-  cf_deployment = "#{deployment}-cf"
-  diego_deployment = "#{deployment}-diego"
-%>
 {
   "title": "<%= environment %> Diego Health",
   "description": "<%= environment %> Diego Health",
@@ -921,11 +917,11 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "bosh.healthmonitor.system.disk.system.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.disk.system.percent{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.disk.system.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.disk.system.percent{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -967,11 +963,11 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.disk.ephemeral.percent{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -1003,11 +999,11 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.disk.persistent.percent{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -1039,11 +1035,11 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "bosh.healthmonitor.system.mem.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.mem.percent{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.mem.percent{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -1085,11 +1081,11 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.cpu.sys{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -1131,11 +1127,11 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.cpu.user{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -1177,11 +1173,11 @@
           "viz": "timeseries",
           "requests": [
           {
-            "q": "bosh.healthmonitor.system.cpu.wait{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           },
           {
-            "q": "bosh.healthmonitor.system.cpu.wait{deployment:<%= diego_deployment %>} by {job,index}",
+            "q": "bosh.healthmonitor.system.cpu.wait{deployment:<%= deployment %>} by {job,index}",
             "type": "line"
           }
         ],

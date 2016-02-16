@@ -28,9 +28,12 @@ cf_deployment:
     smoke_timeout_secs: 360
 
   credentials:
-    api_key: "94d0cd8b2d8ec64e96474e321273b88c"
-    app_key: "9497dd7c21d5da9ef8d6e8f9b27f820a669b22b6"
-
+# GT's datadog info
+#    api_key: "94d0cd8b2d8ec64e96474e321273b88c"
+#    app_key: "9497dd7c21d5da9ef8d6e8f9b27f820a669b22b6"
+# Merrill's datadog info
+    api_key: "bc4444dfa2245c5ced97336cfb2f6699"
+    app_key: "f0637ba6b93527eb6ab487ec899317cab36b2a91"
   jobs: &jobs
     - appdirect_gateway
     - cloud_controller

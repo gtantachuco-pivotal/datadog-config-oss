@@ -1,0 +1,30 @@
+{
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.router__0.responses.4xx{deployment:<%= deployment %>})"
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "4xx errors per second"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.router__0.responses.5xx{deployment:<%= deployment %>})"
+          }
+        ],
+        "events": [<%= default_events_json %>]
+      },
+      "title": "5xx errors per second"
+    }
+  ],
+  "title": "<%= environment %> 400/500 responses",
+  "description": "Rate of 4xx and 5xx responses served through the router"
+}

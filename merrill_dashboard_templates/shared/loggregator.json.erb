@@ -1,0 +1,337 @@
+{
+    "description": "created by cfaccounts+datadog-prod@pivotallabs.com",
+    "graphs": [
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.dea_logging_agent.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GoRoutines (DEAAgent)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.dea_logging_agent.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GCPauseTime (DEAAgent)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfDumpSinks{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Number of Dump Sinks (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfSyslogSinks{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Number of Syslog Sinks (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.DopplerServer.messageRouter.numberOfWebsocketSinks{deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Number of WebSocket Sinks (Server)"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "events": [],
+                "requests": [
+                    {
+                        "q": "rate(datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip})"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Received Log Messages Per Second (Server)"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{ deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Received Log Message Count (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.DopplerServer.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GoRoutines (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.DopplerServer.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000 "
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GCPauseTime (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "bosh.healthmonitor.system.mem.percent{job:doppler_z1} by {index}",
+                        "stacked": false
+                    },
+                    {
+                        "q": "bosh.healthmonitor.system.mem.percent{job:doppler_z2} by {index}",
+                        "stacked": false
+                    }
+                ]
+            },
+            "title": "<%= environment %>: Memory Used Percentage (Server)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.LoggregatorTrafficController.numGoRoutines{deployment: <%= deployment %> } by {ip}"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GoRoutines (LoggregatorTrafficcontroller)"
+        },
+        {
+            "definition": {
+                "events": [],
+                "requests": [
+                    {
+                        "q": "datadog.nozzle.LoggregatorTrafficController.memoryStats.lastGCPauseTimeNS{deployment: <%= deployment %>} by {ip} / 1000000"
+                    }
+                ]
+            },
+            "title": "<%= environment %>: GCPauseTime (LoggregatorTrafficcontroller)"
+        },
+        {
+            "definition": {
+                "requests": [
+                    {
+                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment: <%= deployment %>-diego})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment: <%= deployment %>}))"
+                    }
+                ],
+                "events": [],
+                "viz": "timeseries"
+            },
+            "title": "<%= environment %>: Sum (moving-avg) lost msg/s Metron-Received → Doppler-Received"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "100 * ((ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>-diego})) - ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment:<%= deployment %>})))) / (ewma_10((rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>}))) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.dropsondeAgentListener.receivedMessageCount{deployment:<%= deployment %>-diego})))"
+                    }
+                ],
+                "events": []
+            },
+            "title": "<%= environment %>: % (moving-avg) lost msg/s Metron-Received → Doppler-Received"
+        },
+        {
+            "definition": {
+                "requests": [
+                    {
+                        "q": "ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>-diego})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment: <%= deployment %>} )) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= deployment %>} )))",
+                        "type": "line"
+                    }
+                ],
+                "events": [],
+                "viz": "timeseries"
+            },
+            "title": "<%= environment %>: Sum (moving-avg) lost msg/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "100 * ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>-diego})) - (ewma_10(rate(sum:datadog.nozzle.DopplerServer.dropsondeListener.receivedMessageCount{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.DopplerServer.tlsListener.receivedMessageCount{deployment: <%= deployment %>} ))) ) / ( ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>})) + ewma_10(rate(sum:datadog.nozzle.MetronAgent.DopplerForwarder.sentMessages{deployment: <%= deployment %>-diego})) )"
+                    }
+                ],
+                "events": []
+            },
+            "title": "<%= environment %>: % (moving-avg) lost msg/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition":{
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeUnmarshaller.counterEventReceived{deployment:<%= deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeUnmarshaller.counterEventReceived{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.counterEventReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ],
+                "events":[]
+            },
+            "title": "<%= environment %>: Lost CounterEvent/s Metron-Received → Doppler-Received"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeUnmarshaller.valueMetricReceived{deployment:<%= deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeUnmarshaller.valueMetricReceived{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.valueMetricReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ],
+                "events":[]
+            },
+            "title": "<%= environment %>: Sum Lost ValueMetric/s Metron-Received → Doppler-Received"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeUnmarshaller.containerMetricReceived{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.containerMetricReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ]
+            },
+            "events": [],
+            "title": "<%= environment %>: Lost ContainerMetric/s Metron-Received → Doppler-Received"
+        },
+        {
+            "definition": {
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeUnmarshaller.logMessageTotal{deployment:<%= deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeUnmarshaller.logMessageTotal{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ],
+                "viz": "timeseries"
+            },
+            "events":[],
+            "title": "<%= environment %>: Lost LogMessage/s Metron-Received → Doppler-Received"
+        },
+        {
+            "definition": {
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.counterEventMarshalled{deployment:<%= deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.counterEventMarshalled{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.counterEventReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ],
+                "viz": "timeseries"
+            },
+            "events":[],
+            "title": "<%= environment %>: Lost CounterEvent/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition": {
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.valueMetricMarshalled{deployment:<%= deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.valueMetricMarshalled{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.valueMetricReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ],
+                "viz": "timeseries"
+            },
+            "events": [],
+            "title": "<%= environment %>: Lost ValueMetric/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition":{
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.containerMetricMarshalled{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.containerMetricReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ],
+                "viz": "timeseries"
+            },
+            "events":[],
+            "title": "<%= environment %>: Lost ContainerMetric/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition":{
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ]
+            },
+            "events":[],
+            "title":"<%= environment %>: Lost ContainerMetric/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition":{
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpStartStopEmitted{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.httpStartStopReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ]
+            },
+            "events":[],
+            "title":"<%= environment %>: Lost HttpStartStop/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition":{
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.logMessageMarshalled{deployment:<%= deployment %>})) + ewma_10(per_second(sum:datadog.nozzle.MetronAgent.dropsondeMarshaller.logMessageMarshalled{deployment:<%= deployment %>-diego})) - ewma_10(per_second(sum:datadog.nozzle.DopplerServer.dropsondeUnmarshaller.logMessageTotal{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ],
+                "viz": "timeseries"
+            },
+            "events":[],
+            "title":"<%= environment %>: Lost LogMessages/s Metron-Sent → Doppler-Received"
+        },
+        {
+            "definition": {
+                "viz": "timeseries",
+                "requests": [
+                    {
+                        "q": "ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpUnmatchedStartReceived{deployment:<%= deployment %>})), ewma_10(per_second(sum:datadog.nozzle.MetronAgent.MessageAggregator.httpUnmatchedStopReceived{deployment:<%= deployment %>}))",
+                        "type": "line"
+                    }
+                ]
+            },
+            "events":[],
+            "title":"<%= environment %>: HttpUnmatched Start and Stop Metron-Received"
+        }
+    ],
+    "title": "<%= environment %> Loggregator Information"
+}
