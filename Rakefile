@@ -141,6 +141,7 @@ def build_tasks_for(env_name)
     desc "Make a json template for the specified screen at the given file path"
     task :get_screen_json_erb, [:screen_id, :path] do |t, args|
       screen = ScreenSynchronizer.new(CONFIG_PATH, env_name.to_s)
+      screen.fetch_from_datadog()
 
       file_path = File.expand_path args[:path]
       screen.get_json_template(args[:screen_id], file_path)

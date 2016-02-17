@@ -8,7 +8,9 @@ class ScreenSynchronizer < Synchronizer
     logger.info "Found #{screens.size} screenboards at Datadog"
 
     screens.each_with_object({}) do |screen, screens|
+      logger.info "Screen ID #{screen['title']} #{screen['id']}"
       screens[screen['title']] = screen['id']
+
     end
   end
 
@@ -94,6 +96,7 @@ class ScreenSynchronizer < Synchronizer
 
 
   def identify_target_link(url)
+    logger.info "URL [#{url}]"
     case url
     when /\/dash/
       id = url.match(/.*\/dash\/(\d+).*/).captures.first
@@ -127,6 +130,7 @@ class ScreenSynchronizer < Synchronizer
     note_widgets.map do |v|
       if match = v["html"].match(/.*\[.*\]\((\/.*)\).*/)
         key = match[1]
+# GT temporarily commented out
         v["html"][key] = identify_target_link(key)
       end
     end
