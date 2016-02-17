@@ -2,164 +2,9 @@
   "graphs": [
     {
       "definition": {
-        "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:aws.ec2.network_in{*} by {name}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "aws.ec2.network_in"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:aws.ec2.network_out{*} by {name}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "aws.ec2.network_out"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "sum:aws.elb.request_count{*} by {host}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "aws.elb.request_count"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:aws.elb.httpcode_elb_5xx{host:cf-router} by {availability-zone}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "aws.elb.httpcode_elb_5xx"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:aws.elb.httpcode_backend_5xx{host:cf-router} by {availability-zone}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "aws.elb.httpcode_backend_5xx"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:aws.elb.latency{host:cf-router} by {availability-zone}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "aws.elb.latency"
-    },
-    {
-      "definition": {
-        "viz": "timeseries",
-        "requests": [
-          {
-            "q": "avg:aws.elb.surge_queue_length{host:cf-router} by {availability-zone}",
-            "type": "area"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          }
-        ]
-      },
-      "title": "aws.elb.surge_queue_length"
-    },
-    {
-      "definition": {
-        "requests": [
-          {
-            "q": "avg:aws.elb.healthy_host_count{host:cf-router}"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
-          }
-        ]
-      },
-      "title": "aws.elb.healthy_host_count"
-    },
-    {
-      "definition": {
-        "requests": [
-          {
-            "q": "avg:aws.elb.un_healthy_host_count{host:cf-router}"
-          }
-        ],
-        "events": [
-          {
-            "q": "tags:deployment:<%= environment %> start_deploy"
-          },
-          {
-            "q": "tags:deployment:<%= environment %> end_deploy"
-          }
-        ]
-      },
-      "title": "aws.elb.un_healthy_host_count"
-    },
-    {
-      "definition": {
-        "requests": [
-          {
-            "q": "per_second(sum:datadog.nozzle.router__0.total_requests{deployment:<%= deployment %>} by {job,index})",
+            "q": "per_second(sum:datadog.nozzle.router__0.total_requests{deployment:<%= diego_deployment %>} by {job,index})",
             "stacked": false
           }
         ],
@@ -172,14 +17,14 @@
           }
         ]
       },
-      "title": "Requests per second, by router"
+      "title": "Requests per second, Router 0"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "avg:datadog.nozzle.router__0.total_routes{deployment:<%= deployment %>} by {job,index}",
+            "q": "avg:datadog.nozzle.router__0.total_routes{deployment:<%= diego_deployment %>} by {job,index}",
             "type": "line"
           }
         ],
@@ -189,14 +34,14 @@
           }
         ]
       },
-      "title": "Total routes by router"
+      "title": "Total routes - router 0"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.bad_gateways{deployment:<%= deployment %>} by {job,index})",
+            "q": "per_second(avg:datadog.nozzle.router__0.bad_gateways{deployment:<%= diego_deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -206,14 +51,14 @@
           }
         ]
       },
-      "title": "router.bad_gateways per second"
+      "title": "router 0.bad_gateways per second"
     },
     {
       "definition": {
         "viz": "heatmap",
         "requests": [
           {
-           "q": "avg:datadog.nozzle.router__0.latency{deployment:<%= deployment %>} by {job,index}",
+           "q": "avg:datadog.nozzle.router__0.latency{deployment:<%= diego_deployment %>} by {job,index}",
             "conditional_formats": []
           }
         ],
@@ -223,14 +68,14 @@
           }
         ]
       },
-      "title": "Router Latency"
+      "title": "Router 0 Latency"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.rejected_requests{deployment:<%= deployment %>} by {job,index})",
+            "q": "per_second(avg:datadog.nozzle.router__0.rejected_requests{deployment:<%= diego_deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -240,14 +85,14 @@
           }
         ]
       },
-      "title": "router.rejected_requests per second"
+      "title": "router 0.rejected_requests per second"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.total_requests{deployment:<%= deployment %>} by {job,index})",
+            "q": "per_second(avg:datadog.nozzle.router__0.total_requests{deployment:<%= diego_deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -257,14 +102,14 @@
           }
         ]
       },
-      "title": "router.requests per second"
+      "title": "router 0.requests per second"
     },
     {
       "definition": {
         "viz": "timeseries",
         "requests": [
           {
-            "q": "per_second(avg:datadog.nozzle.router__0.responses{deployment:<%= deployment %>} by {job,index})",
+            "q": "per_second(avg:datadog.nozzle.router__0.responses{deployment:<%= diego_deployment %>} by {job,index})",
             "type": "area"
           }
         ],
@@ -274,10 +119,131 @@
           }
         ]
       },
-      "title": "router.responses per second"
+      "title": "router 0.responses per second"
+    },
+    {
+      "definition": {
+        "requests": [
+          {
+            "q": "per_second(sum:datadog.nozzle.router__1.total_requests{deployment:<%= diego_deployment %>} by {job,index})",
+            "stacked": false
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          },
+          {
+            "q": "tags:deployment:<%= environment %> end_deploy"
+          }
+        ]
+      },
+      "title": "Requests per second router 1"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:datadog.nozzle.router__1.total_routes{deployment:<%= diego_deployment %>} by {job,index}",
+            "type": "line"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "Total routes by router 1"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.router__1.bad_gateways{deployment:<%= diego_deployment %>} by {job,index})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "router 1 .bad_gateways per second"
+    },
+    {
+      "definition": {
+        "viz": "heatmap",
+        "requests": [
+          {
+           "q": "avg:datadog.nozzle.router__1.latency{deployment:<%= diego_deployment %>} by {job,index}",
+            "conditional_formats": []
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "Router  1 Latency"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.router__1.rejected_requests{deployment:<%= diego_deployment %>} by {job,index})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "router 1.rejected_requests per second"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.router__1.total_requests{deployment:<%= diego_deployment %>} by {job,index})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "router 1.requests per second"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "per_second(avg:datadog.nozzle.router__1.responses{deployment:<%= diego_deployment %>} by {job,index})",
+            "type": "area"
+          }
+        ],
+        "events": [
+          {
+            "q": "tags:deployment:<%= environment %> start_deploy"
+          }
+        ]
+      },
+      "title": "router 1.responses per second"
     }
   ],
-  "description": "Health statistics from the routers and their ELBs",
+  "description": "Health statistics from the routers",
   "id": 19608,
-  "title": "<%= environment %> Router and ELB health metrics"
+  "title": "<%= environment %> Router health metrics"
 }
