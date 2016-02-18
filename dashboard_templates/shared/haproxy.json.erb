@@ -1,0 +1,121 @@
+{
+  "description": "created by gtantachuco@pivotal.io",
+  "created": "2016-02-18T02:01:45.901693+00:00",
+  "title": "<%= environment %> HAProxy",
+  "modified": "2016-02-18T02:01:45.825076+00:00",
+  "graphs": [
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.healthy{job:ha_proxy_z1}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.healthy"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.sys{job:ha_proxy_z1}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.cpu.sys"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.mem.percent{job:ha_proxy_z1}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.mem.percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.user{job:ha_proxy_z1}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.cpu.user"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.cpu.wait{job:ha_proxy_z1}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.cpu.wait"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.system.percent{job:ha_proxy_z1}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.disk.system.percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.ephemeral.percent{job:ha_proxy_z1}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.disk.ephemeral.percent"
+    },
+    {
+      "definition": {
+        "viz": "timeseries",
+        "requests": [
+          {
+            "q": "avg:bosh.healthmonitor.system.disk.persistent.percent{job:ha_proxy_z1}"
+          }
+        ],
+        "events": [
+
+        ]
+      },
+      "title": "bosh.healthmonitor.system.disk.persistent.percent"
+    }
+  ],
+  "id": 99952
+}

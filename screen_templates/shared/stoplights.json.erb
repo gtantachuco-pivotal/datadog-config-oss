@@ -388,7 +388,7 @@
     {
       "metric": "bosh.healthmonitor.system.healthy",
       "text_align": "center",
-      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100",
+      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:ha_proxy_z1} *100",
       "text_size": "auto",
       "title_size": 16,
       "title": true,
@@ -400,11 +400,11 @@
       "wrapped": true,
       "type": "query_value",
       "tags": [
-        "deployment:<%= bosh_deployment %>",
-        "job:bosh"
+        "deployment:<%= deployment %>",
+        "job:ha_proxy_z1"
       ],
       "precision": 0,
-      "title_text": "Bosh - 5m",
+      "title_text": "HAProxy - 5m",
       "padding": 8,
       "calc_func": "raw",
       "metric_type": "standard",
@@ -414,13 +414,13 @@
         {
           "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_red') %>,
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:ha_proxy_z1} *100', 'white_on_red') %>,
           "palette": "white_on_red"
         },
         {
           "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:ha_proxy_z1} *100', 'white_on_green') %>,
           "palette": "white_on_green"
         }
       ],
@@ -433,7 +433,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100",
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:ha_proxy_z1} *100",
             "aggregator": "min",
             "conditional_formats": [
               {
@@ -823,7 +823,7 @@
     {
       "metric": "bosh.healthmonitor.system.healthy",
       "text_align": "center",
-      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100",
+      "query": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:ha_proxy_z1} *100",
       "text_size": "auto",
       "title_size": 16,
       "title": true,
@@ -835,11 +835,11 @@
       "wrapped": true,
       "type": "query_value",
       "tags": [
-        "deployment:<%= bosh_deployment %>",
-        "job:bosh"
+        "deployment:<%= deployment %>",
+        "job:ha_proxy_z1"
       ],
       "precision": 0,
-      "title_text": "Bosh - 24h",
+      "title_text": "HAProxy - 24h",
       "padding": 8,
       "calc_func": "raw",
       "metric_type": "standard",
@@ -849,13 +849,13 @@
         {
           "invert": false,
           "comparator": "<",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_yellow') %>,
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:ha_proxy_z1} *100', 'white_on_yellow') %>,
           "palette": "white_on_yellow"
         },
         {
           "invert": false,
           "comparator": ">=",
-          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:bosh_deployment,job:bosh} *100', 'white_on_green') %>,
+          "value": <%= threshold_value('avg:bosh.healthmonitor.system.healthy{deployment:deployment,job:ha_proxy_z1} *100', 'white_on_green') %>,
           "palette": "white_on_green"
         }
       ],
@@ -868,7 +868,7 @@
         "viz": "query_value",
         "requests": [
           {
-            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= bosh_deployment %>,job:bosh} *100",
+            "q": "avg:bosh.healthmonitor.system.healthy{deployment:<%= deployment %>,job:ha_proxy_z1} *100",
             "aggregator": "min",
             "conditional_formats": [
               {
@@ -2393,6 +2393,26 @@
       "html": "[Router](/dash/dash/<%= lookup_note_asset(environment + ' Router health metrics', :dashboard) %>)",
       "y": 6.744791666666667,
       "x": -3.9736429998290155e-08,
+      "font_size": "24",
+      "tick": false,
+      "type": "note",
+      "width": 12,
+      "auto_refresh": false
+    },
+    {
+      "title_size": 16,
+      "title": true,
+      "refresh_every": 30000,
+      "tick_pos": "50%",
+      "title_align": "left",
+      "tick_edge": "left",
+      "text_align": "center",
+      "title_text": "",
+      "height": 6,
+      "bgcolor": "white",
+      "html": "[HAProxy](/dash/dash/<%= lookup_note_asset(environment + ' HAProxy', :dashboard) %>)",
+      "y": 43,
+      "x": 0,
       "font_size": "24",
       "tick": false,
       "type": "note",
